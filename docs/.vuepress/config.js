@@ -1,6 +1,7 @@
 // .vuepress/config.js
+const utils = require('./utils')
 module.exports = {
-  // base: '/blog/',
+  base: '/blog/',
   themeConfig: {
     logo: '/logo.jpg', // 左上角logo
     nav: [
@@ -10,16 +11,15 @@ module.exports = {
     sidebar: {
       '/blog/':[
         {
-          "title": "记录",
-          'path': 'live/',
+          "title": "ts笔记",
           "children": [
-             "",
-              "video"
-              
+            //  '',
+             'TSLearn'
           ]
       }
       ]
     },
-    sidebarDepth :2
+    // sidebar: utils.inferSiderbars(),
+    sidebarDepth :2,
   }
 }

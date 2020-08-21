@@ -1,59 +1,49 @@
 {
-    "/article/": [
-        {
-            "title": "文章",
-            "children": [
-                "coding",
-                ""
-            ],
-            "collapsable": false
-        }
-    ],
-    "/diary/": [
-        {
-            "title": "最近阅读",
-            "children": [
-                "read",
-                "video",
-                "You-Dont-Know"
-            ],
-            "collapsable": false
-        }
-    ],
-    "/interview/": [
-        {
-            "title": "面试",
-            "children": [
-                "algorithms",
-                "design-patterns",
-                "js",
-                "network",
-                "questions",
-                "react",
-                "",
-                "vue"
-            ],
-            "collapsable": false
-        }
-    ],
-    "/blog/": [
-        {
-            "title": "Blog",
-            "children": [
-                "cs",
-                "es6",
-                "fe",
-                "google-developer",
-                "js",
-                "other",
-                "performance ",
-                "product",
-                "",
-                "talk",
-                "vue",
-                "webpack"
-            ],
-            "collapsable": false
-        }
-    ]
+  "/article/": [
+    { "title": "文章", "children": ["", "coding"], "collapsable": false }
+  ],
+  "/diary/": [
+    {
+      "title": "最近阅读",
+      "children": ["You-Dont-Know", "read", "video"],
+      "collapsable": false
+    }
+  ],
+  "/interview/": [
+    {
+      "title": "面试",
+      "children": [
+        "",
+        "algorithms",
+        "design-patterns",
+        "js",
+        "network",
+        "questions",
+        "react",
+        "vue"
+      ],
+      "collapsable": false
+    }
+  ],
+  "/blog/": [
+    {
+      "title": "Blog",
+      "children": [
+        "",
+        "cs",
+        "es6",
+        "fe",
+        "google-developer",
+        "js",
+        "other",
+        "performance ",
+        "product",
+        "talk",
+        "typescript",
+        "vue",
+        "webpack"
+      ],
+      "collapsable": false
+    }
+  ]
 }
