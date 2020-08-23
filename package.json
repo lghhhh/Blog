@@ -17,5 +17,8 @@
   },
   "keywords": [],
   "author": "linguihao",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vuepress": "^1.5.3"
+  }
 }
