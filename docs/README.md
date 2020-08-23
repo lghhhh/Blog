@@ -1,9 +1,9 @@
 ---
 home: true
 # heroImage: /logo.jpg 
-heroText:  111
-tagline: 222
-actionText: 进入博客 →
+heroText: 一颗小脑瓜子的冒险
+# tagline: 
+actionText: 启程 →
 actionLink: /bolg/
 # features:
 # - title: 简洁至上
