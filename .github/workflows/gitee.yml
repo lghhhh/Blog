@@ -1,3 +1,4 @@
+name: Sync to Gitee
 on:
   push:
     branches:
@@ -13,4 +14,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
         with:
           source-repo: 'git@github.com:lghhhh/blog.git'
-          destination-repo: 'git@gitee.com:linguihao/blog.git
+          destination-repo: 'git@gitee.com:linguihao/blog.git'
