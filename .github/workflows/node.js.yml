@@ -24,9 +24,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run docs:build
-    - run: cd docs/.vuepress/dist
+    # - run: cd docs/.vuepress/dist
     - run: git init
-    - run: git add -A
+    # - run: git add -A
+    - run: git add ./docs/.vuepress/dist/
     - run: git config --global user.email "513279340@qq.com"
     - run: git config --global user.name "linguihao"
     - run: git commit -m 'AutoDeploy'
