@@ -28,6 +28,6 @@ jobs:
     - run: git init
     - run: git add -A
     - run: git init
-    - run: git initgit commit -m 'AutoDeploy'
+    - run: git commit -m 'AutoDeploy'
     # - run: git push -f https://${{ secrets.GITEE_TOKEN }}github.com/lghhhh/blog.git master:gh-pages
     - run: git push -f https://oauth2:${{ secrets.GITEE_TOKEN }}@github.com/lghhhh/blog.git master:gh-pages
