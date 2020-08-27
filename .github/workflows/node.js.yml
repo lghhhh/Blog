@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [ 12.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -27,7 +27,8 @@ jobs:
     - run: cd docs/.vuepress/dist
     - run: git init
     - run: git add -A
-    - run: git init
+    - run: git config --global user.email "513279340@qq.com"
+    - run: git config --global user.name "linguihao"
     - run: git commit -m 'AutoDeploy'
     # - run: git push -f https://${{ secrets.GITEE_TOKEN }}github.com/lghhhh/blog.git master:gh-pages
     - run: git push -f https://oauth2:${{ secrets.GITEE_TOKEN }}@github.com/lghhhh/blog.git master:gh-pages
