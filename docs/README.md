@@ -2,7 +2,7 @@
 home: true
 # heroImage: /logo.jpg 
 heroText: 一颗小脑瓜子的冒险
-# tagline: 
+tagline: do it! → why? → just do it!! → oh!!!
 actionText: 启程 →
 actionLink: /bolg/
 # features:
