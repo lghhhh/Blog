@@ -31,7 +31,11 @@ jobs:
       working-directory: ./docs/.vuepress/dist
     # - run: git add ./docs/.vuepress/dist/
     - run: git config --global user.email "513279340@qq.com"
+      working-directory: ./docs/.vuepress/dist
     - run: git config --global user.name "linguihao"
+      working-directory: ./docs/.vuepress/dist
     - run: git commit -m 'AutoDeploy'
+      working-directory: ./docs/.vuepress/dist
     # - run: git push -f https://${{ secrets.GITEE_TOKEN }}github.com/lghhhh/blog.git master:gh-pages
     - run: git push -f https://oauth2:${{ secrets.GITEE_TOKEN }}@github.com/lghhhh/blog.git master:gh-pages
+      working-directory: ./docs/.vuepress/dist
