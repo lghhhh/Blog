@@ -37,5 +37,5 @@ jobs:
     - run: git commit -m 'AutoDeploy'
       working-directory: ./docs/.vuepress/dist
     # - run: git push -f https://${{ secrets.GITEE_TOKEN }}github.com/lghhhh/blog.git master:gh-pages
-    - run: git push -f https://oauth2:${{ secrets.GITEE_TOKEN }}@github.com/lghhhh/blog.git master:gh-pages
+    - run: git push -f https://oauth2:${{ secrets.GITEE_TOKEN }}@github.com/lghhhh/blog.git gh-pages
      # working-directory: ./docs/.vuepress/dist
