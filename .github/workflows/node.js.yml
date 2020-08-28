@@ -24,12 +24,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run docs:build
-    #- run: cd ./docs/.vuepress/dist
+    - run: cp -r ./.github ./docs/.vuepress/dist
     - run: git init
       working-directory: ./docs/.vuepress/dist
     - run: git add -A
       working-directory: ./docs/.vuepress/dist
-    - run: git add ../../../.github/workflows/sync2gitee.yml
+    # - run: git add ../../../.github/workflows/sync2gitee.yml
     # - run: git add ./docs/.vuepress/dist/
     - run: git config --global user.email "513279340@qq.com"
     - run: git config --global user.name "lghhhh"
