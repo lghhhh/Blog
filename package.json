@@ -11,10 +11,6 @@
     "docs:build": "vuepress build docs",
     "deploy": "./deploy.sh"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://gitee.com/linguihao/blog.git"
-  },
   "keywords": [],
   "author": "linguihao",
   "license": "ISC",
