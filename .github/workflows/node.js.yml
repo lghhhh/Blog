@@ -25,6 +25,7 @@ jobs:
     - run: npm install
     - run: npm run docs:build
     - run: cd ./docs/.vuepress/dist
+    - run: echo pwd
     - run: git init
     - run: git add -A
     # - run: git add ./docs/.vuepress/dist/
