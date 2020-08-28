@@ -18,6 +18,7 @@ jobs:
           dst_token: ${{ secrets.GITEE_TOKEN }}
           account_type: user
           white_list: "blog"
+          force_update: true
 
       # - name: Sync to Gitee
       #   uses: wearerequired/git-mirror-action@master
