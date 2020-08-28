@@ -29,8 +29,7 @@ jobs:
       working-directory: ./docs/.vuepress/dist
     - run: git add -A
       working-directory: ./docs/.vuepress/dist
-    - run: git add sync2gitee.yml
-      working-directory: ./.github/workflows
+    - run: git add ./.github/workflows/sync2gitee.yml
     # - run: git add ./docs/.vuepress/dist/
     - run: git config --global user.email "513279340@qq.com"
     #  working-directory: ./docs/.vuepress/dist

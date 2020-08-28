@@ -2,7 +2,7 @@ name: Sync2Gitee And Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master,gh-pages]
 
 
 jobs:
