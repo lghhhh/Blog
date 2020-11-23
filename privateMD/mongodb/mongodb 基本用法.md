@@ -120,11 +120,13 @@ db.collection.insert()
     
 ## 更新数据  
 更新方法  
-```
+```sql
 db.collection.updateOne(<filter>, <update>, <options>)
 db.collection.updateMany(<filter>, <update>, <options>)
 db.collection.replaceOne(<filter>, <update>, <options>)
+//  <option> = {upsert : true} 表示查询不到数据时，添加新的数据 
 ```
+
 - updateOne  
 更新筛选到第一个document，使用$set 更新值，$currentDate更新时间  
     ```
@@ -159,4 +161,3 @@ db.collection.deleteOne()
 ```db.inventory.deleteMany({})```
 - 删除 匹配到的所有数据  
 ```db.inventory.deleteMany({<field1>: { <operator1>: <value1> }})```
-- 
