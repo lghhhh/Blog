@@ -76,12 +76,60 @@ generator的形式是一个函数，但是与一般函数有两个不同点：
 > 注意 箭头函数不能用来定义生成器函数  
 
 调用generator函数返回一个`生成器对象`，生成器对象一开始处于暂停(suspended)执行的状态与迭代器对象类似,生成器也实现了`iterator`接口，具有next()方法。调用next()方法可以让生成器开始或回复执行。
-> 生成器对象实现了`Iterable接口`，默认的迭代器是内置的
+> 生成器对象实现了`Iterable接口`，默认的迭代器是自引用的
 ```js
 function * gen () {}
 const genObj = gen()
 console.log(gen)    //  ƒ * gen () {}
 console.log(gen()[Symbol.iterator])   // ƒ [Symbol.iterator]() { [native code] }
 console.log(genObj[Symbol.iterator]() === genObj)  // true
-
 ```
+## yield
+Gennerator实现在函数块内的暂停和恢复执行，`yield`就是函数块内的暂停标志。调用Gennerator函数返回一个生成器，调用生成器内的`next`方法会遍历下一个内部的状态。   
+生成器的`next`方法执行逻辑：  
+1. 遇到了`yield`就暂停执行后面的操作，把`yield` 后面表达式的值返回给`IteratorResult`对象的value属性
+2. 再一次调用`next`方法时,继续执行直到遇到下一个`yield`表达式
+3. 如果没有遇到`yield`表达式，就一直运行到程序结束，直到`return`语句位置，并返回`return`后面的表达式。如果没有return语句则返回undefined.
+
+## next 方法参数
+迭代器在调用`next`方法时可以带一个参数，这个参数会给当做上一个`yield`的返回值。
+```js
+function* gen(){
+    // yield表达式在另外一个表达式中需要用括号括起来
+    console.log('hello'+(yield 123))  
+}
+let a=gen()
+a.next() //{done:false,value:123} 
+// 生成器一开始处于suspended状态 执行next遇到第一个yield 返回 yield后面的值
+a.next('777') 
+// hello777 
+// {done:true,value:undefined}
+```
+## Generator.prototype.throw()
+Generator函数生成的生成器对象有一个`throw`方法，可以在函数外部抛出错误，在内部捕获错误。
+> 前提 
+>1. 内部有try...catch代码块，没有的话还是会抛出到函数体外部。
+>2. 生成器对象至少执行一次next方法启动函数体内的方法。
+1. 生成器对象通过`throw`抛出错误，函数内捕获完一次错误后就不会继续捕获第二个错误。
+```js
+function * gen () {
+    try {
+      yield
+    } catch (e) {
+      console.log('内部捕获', e)
+    }
+}
+const i = gen()
+i.next()
+try {
+  i.throw('a')
+  i.throw('b')
+} catch (e) {
+  console.log('外部捕获', e)
+}
+// 内部捕获 a
+// 外部捕获 b
+```
+2.  注意区分 生成器对象通的`throw`和全局的`throw`命令，后者抛出的错误不会在内部捕获。
+3. Generator函数在捕获`throw`方法抛出的错误后会继续执行下一条`yield`表达式。等价于捕获后执行一次`next`方法
+4. Generator函数在执行过程中抛出错误，**但是没有被内部捕获**，程序就不会继续执行下去。如果继续执行next方法返回一个`{done:true,value:undefined}`
