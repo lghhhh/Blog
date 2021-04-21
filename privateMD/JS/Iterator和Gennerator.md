@@ -91,6 +91,11 @@ Gennerator实现在函数块内的暂停和恢复执行，`yield`就是函数块
 2. 再一次调用`next`方法时,继续执行直到遇到下一个`yield`表达式
 3. 如果没有遇到`yield`表达式，就一直运行到程序结束，直到`return`语句位置，并返回`return`后面的表达式。如果没有return语句则返回undefined.
 
+## yield*
+如果要在`Gennerator`函数使用另外一个`Gennerator`函数可以使用`yield*`放在第二个函数的`生成器对象`前.否则需要自己添加遍历。
+
+
+- - -
 ## next 方法参数
 迭代器在调用`next`方法时可以带一个参数，这个参数会给当做上一个`yield`的返回值。
 ```js
@@ -133,3 +138,23 @@ try {
 2.  注意区分 生成器对象通的`throw`和全局的`throw`命令，后者抛出的错误不会在内部捕获。
 3. Generator函数在捕获`throw`方法抛出的错误后会继续执行下一条`yield`表达式。等价于捕获后执行一次`next`方法
 4. Generator函数在执行过程中抛出错误，**但是没有被内部捕获**，程序就不会继续执行下去。如果继续执行next方法返回一个`{done:true,value:undefined}`
+
+## Generator.prototype.return()
+生成器对象的`return`方法也可以提前结束`Generator`函数。  
+**特征**   
+1. `return('xxx')`函数的参数回当成返回结果的`value`属性`{done:true,value:'xxx'}`，不提供参数的时候返回的`value`属性为`undefined`.
+2. 如果 `Generator`函数内部有`try...finally`模块，嗲用`return()`方法后会执行`finally`模块的代码，然后在结束运行
+
+## next  return throw 的共同点
+三个方法本质上可以理解为，恢复`generator`函数的运行，用不同的语句替换`yeild`表达式。
+- next 将`yeild`替换成一个值。
+- return 将`yeild`替换成一个`return`语句。
+- throw  将`yeild`替换成一异常抛出。
+
+
+
+
+
+
+
+
