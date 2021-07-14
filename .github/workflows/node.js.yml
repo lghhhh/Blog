@@ -1,0 +1,40 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: deploy page
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm run docs:build
+    - run: cp -r ./.github ./docs/.vuepress/dist
+    - run: git init
+      working-directory: ./docs/.vuepress/dist
+    - run: git add -A
+      working-directory: ./docs/.vuepress/dist
+    # - run: git add ../../../.github/workflows/sync2gitee.yml
+    # - run: git add ./docs/.vuepress/dist/
+    - run: git config --global user.email "513279340@qq.com"
+    - run: git config --global user.name "lghhhh"
+    - run: git commit -m 'AutoDeploy'
+      working-directory: ./docs/.vuepress/dist
+    # - run: git push -f https://${{ secrets.GITEE_TOKEN }}github.com/lghhhh/blog.git master:gh-pages
+    - run: git push -f https://oauth2:${{ secrets.P_TOKEN }}@github.com/lghhhh/blog.git master:gh-pages
+      working-directory: ./docs/.vuepress/dist
